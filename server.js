@@ -11,16 +11,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+//Modularize Routes---------------------------------------------------------------------------
+
 //API Routes
 app.use('/api', apiRoutes)
-app.post('/api/notes', (req,res) => {
-    res.json('post!');
-});
+
 
 //HTML Routes => Anything preceded by a '/' will route to htmlRoutes
 //Order matters here because '/' is essentially an Else statement, and htmlRoutes contains '*'
 app.use('/', htmlRoutes);
  
+//--------------------------------------------------------------------------------------------
 
 //Start server on the port  
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
